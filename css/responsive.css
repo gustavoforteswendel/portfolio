@@ -1,0 +1,465 @@
+/* =============================================
+   RESPONSIVE.CSS — Gustavo Wenzel Portfolio
+   Mobile-first overrides. Desktop é a experiência principal.
+   Cada breakpoint recompõe o layout — não empilha cegamente.
+============================================= */
+
+/* === LARGE DESKTOP: acima de 1600px === */
+@media (min-width: 1600px) {
+  .hero__title {
+    font-size: 10.5rem;
+  }
+
+  .scene__title {
+    font-size: 5.5rem;
+  }
+
+  .projects__counter {
+    font-size: 1.15rem;
+  }
+
+  .stacks__grid {
+    gap: 2rem;
+  }
+
+  .stack-item {
+    font-size: 2.25rem;
+    padding: 1.5rem 2.25rem;
+  }
+}
+
+/* === LARGE DESKTOP — painel dominante ligeiramente maior === */
+@media (min-width: 1600px) {
+  .scene__title {
+    font-size: clamp(3.5rem, 5.8vw, 10rem);
+  }
+}
+
+/* === TABLET: 768px – 1023px ===
+   Accordion fica com 3 cards + 2 estreitos */
+@media (max-width: 1023px) {
+
+  .nav__links {
+    gap: 2rem;
+  }
+
+  /* Hero */
+  .hero__layout {
+    grid-template-columns: 1fr;
+    grid-template-rows:    auto 1fr;
+    align-items:           flex-start;
+    padding-top:           calc(var(--nav-h) + 2rem);
+    padding-bottom:        0;
+  }
+
+  .hero__text-area {
+    grid-row:       1;
+    padding-left:   0;
+    padding-bottom: 3rem;
+    order:          -1;
+  }
+
+  .hero__badge-area {
+    grid-row:   2;
+    align-self: flex-end;
+    padding-bottom: 0;
+  }
+
+  /* Oculta cordão CSS no tablet (layout muda para coluna única) */
+  .hero__badge-area::before {
+    display: none;
+  }
+
+  .hero__badge-placeholder {
+    max-height:   50vh;
+    aspect-ratio: 1 / 1;
+    width:        60%;
+  }
+
+  .hero__title {
+    font-size: clamp(4rem, 9vw, 7rem);
+  }
+
+  /* Projects — JS continua controlando largura; apenas tipografia ajusta */
+  .scene__title {
+    font-size: clamp(2.2rem, 4.8vw, 6rem);
+  }
+
+  .projects__progress {
+    width: 140px;
+  }
+
+  /* Stacks: encurta outers em tablet */
+  .stacks-phrase-outer {
+    height: 200vh;
+  }
+
+  .stacks-outer {
+    height: 220vh;
+  }
+
+  .stacks-phrase__text {
+    font-size: clamp(3rem, 7vw, 9rem);
+  }
+
+  /* About */
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .about__visual {
+    min-height: 55vw;
+    order:      0;
+  }
+
+  .about__content {
+    order:   1;
+    padding: 8vw 5vw;
+  }
+
+  /* Project page */
+  .project-info {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .project-info__label-col {
+    flex-direction: row;
+    flex-wrap:      wrap;
+    gap:            2rem;
+  }
+
+  .project-hero__title {
+    font-size: clamp(4rem, 9vw, 9rem);
+  }
+}
+
+/* === MOBILE: abaixo de 768px ===
+   Accordion desativado — cards em fluxo vertical */
+@media (max-width: 767px) {
+
+  /* Nav */
+  .nav__links {
+    display:         none;
+    position:        fixed;
+    inset:           0;
+    inset-block-start: var(--nav-h);
+    background:      rgba(8, 8, 8, 0.97);
+    backdrop-filter: blur(20px);
+    flex-direction:  column;
+    justify-content: center;
+    align-items:     center;
+    gap:             2.5rem;
+    z-index:         99;
+  }
+
+  .nav__links--open {
+    display: flex;
+  }
+
+  .nav__links .nav__link {
+    font-size:      1rem;
+    letter-spacing: 0.2em;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
+  /* Hero */
+  .hero__layout {
+    grid-template-columns: 1fr;
+    padding-top:    calc(var(--nav-h) + 1.5rem);
+    padding-bottom: 2rem;
+    gap:            0;
+  }
+
+  .hero__text-area {
+    padding-bottom: 2rem;
+  }
+
+  .hero__title {
+    font-size: clamp(3.5rem, 14vw, 5.5rem);
+  }
+
+  .hero__badge-area {
+    padding-bottom: 0;
+  }
+
+  .hero__badge-area::before {
+    display: none; /* sem cordão no mobile */
+  }
+
+  .hero__badge-placeholder {
+    width:        75%;
+    max-height:   45vh;
+    aspect-ratio: 3 / 4;
+  }
+
+  .hero__desc {
+    font-size: 0.82rem;
+    max-width: 100%;
+  }
+
+  .hero__scroll-hint {
+    display: none;
+  }
+
+  .hero__bg-text {
+    font-size: clamp(6rem, 28vw, 10rem);
+  }
+
+  /* Projects mobile: layout vertical em coluna, sem sticky */
+  .projects-outer {
+    height: auto !important;
+  }
+
+  .projects {
+    position: static;
+    height:   auto;
+    overflow: visible;
+  }
+
+  .projects__bar {
+    display: none;
+  }
+
+  /* Track vira coluna vertical */
+  .projects__track {
+    position:       static;
+    top:            auto;
+    left:           auto;
+    height:         auto;
+    flex-direction: column;
+    gap:            2px;
+    transform:      none !important;
+    will-change:    auto;
+  }
+
+  /* Painel ocupa largura total com aspect-ratio */
+  .scene {
+    flex:           none;
+    width:          100% !important;  /* override JS inline width */
+    aspect-ratio:   3 / 4;
+    height:         auto;
+    /* Arredondamento fixo no mobile — JS não roda */
+    --scene-radius: 8px;
+    /* Zera todas as custom properties — mostra tudo imediatamente */
+    --title-y:      0%;
+    --details-op:   1;
+    --details-y:    0px;
+    --num-op:       1;
+    --num-y:        0px;
+    --img-br:       0.65;
+    --img-sat:      0.88;
+    --img-scale:    1.0;
+  }
+
+  /* Remove clip-path da imagem — JS não roda no mobile */
+  .scene__bg {
+    clip-path: none !important;
+  }
+
+  /* Remove wrapper de clip do título — mostra imediatamente */
+  .scene__title-clip {
+    overflow: visible;
+  }
+
+  .scene__title {
+    font-size: clamp(2.25rem, 10vw, 4rem);
+    transform: none;  /* ignora CSS var em favor de valor direto */
+  }
+
+  .scene__num {
+    color: rgba(201,169,110,0.7);
+  }
+
+  /* Sem parallax no mobile */
+  .scene__bg-inner {
+    left:        0;
+    width:       100%;
+    will-change: auto;
+  }
+
+  /* Stacks — layout vertical para mobile */
+
+  /* Fase 1: frase (sem sticky, sem clip animation) */
+  .stacks-phrase-outer {
+    height: auto;
+  }
+
+  .stacks-phrase {
+    position:    static;
+    height:      auto;
+    padding:     18vw 5vw 14vw;
+    align-items: flex-start;
+  }
+
+  .stacks-phrase__text {
+    font-size: clamp(3rem, 12vw, 5.5rem);
+  }
+
+  /* Letras sempre visíveis no mobile (override do JS) */
+  .sphrase__letter {
+    opacity: 1 !important;
+    filter:  none !important;
+  }
+
+  /* Fase 2: mapa (sem sticky, ícones em grade flexível) */
+  .stacks-outer {
+    height: auto;
+  }
+
+  .stacks {
+    position:       static;
+    height:         auto;
+    overflow:       visible;
+    padding-bottom: 18vw;
+  }
+
+  .stacks__net {
+    display: none; /* sem canvas no mobile */
+  }
+
+  .stacks__canvas {
+    position:  static;
+    height:    auto;
+    display:   flex;
+    flex-wrap: wrap;
+    gap:       6vw 8vw;
+    padding:   0 5vw;
+    opacity:   1 !important;
+  }
+
+  .stk {
+    position:   static;
+    width:      calc(33.33% - 8vw);
+    transform:  none !important;
+    text-align: center;
+  }
+
+  .stk__icon-wrap {
+    opacity:    0.65;
+    transition: none;
+  }
+
+  .stk__name {
+    font-size: 0.50rem;
+  }
+
+  /* About */
+  .about__visual {
+    min-height: 70vw;
+  }
+
+  .about__title {
+    font-size: clamp(2.25rem, 9vw, 3.5rem);
+  }
+
+  /* Contact */
+  .contact {
+    padding: 18vw 5vw;
+  }
+
+  .contact__bg-text {
+    font-size: clamp(5rem, 24vw, 9rem);
+    opacity:   0.5;
+  }
+
+  .contact__title {
+    font-size: clamp(3rem, 13vw, 5.5rem);
+  }
+
+  .contact__social-links {
+    gap: 1.5rem;
+  }
+
+  /* Footer */
+  .footer {
+    flex-direction: column;
+    gap:            0.75rem;
+    text-align:     center;
+  }
+
+  /* Project pages */
+  .project-hero {
+    padding:     0 5vw 6vh;
+    align-items: flex-end;
+  }
+
+  .project-hero__title {
+    font-size: clamp(3rem, 14vw, 6rem);
+  }
+
+  .project-hero__content {
+    grid-template-columns: 1fr;
+    gap:                   1rem;
+  }
+
+  .project-hero__meta {
+    text-align:     left;
+    flex-direction: row;
+    flex-wrap:      wrap;
+    gap:            1rem;
+  }
+
+  .project-info {
+    padding: 10vw 5vw;
+  }
+
+  .project-info__desc {
+    font-size: clamp(1.1rem, 4.5vw, 1.75rem);
+  }
+
+  .gallery-item--offset,
+  .gallery-item--offset-right {
+    margin-left: 0;
+    width:       100%;
+  }
+
+  .gallery-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-pair .gallery-item {
+    height: clamp(220px, 55vw, 400px);
+  }
+}
+
+/* === MICRO: abaixo de 380px === */
+@media (max-width: 380px) {
+  .hero__title {
+    font-size: 3rem;
+  }
+
+  .project-hero__title {
+    font-size: 2.75rem;
+  }
+}
+
+/* === PREFERÊNCIA DE MOVIMENTO REDUZIDO === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:       0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Scenes — is-active define estado final sem animação */
+  .scene.is-active .scene__bg {
+    clip-path: none;
+  }
+
+  .scene.is-active .scene__title-clip {
+    overflow: visible;
+  }
+
+  /* Sem transição de página */
+  .page-transition-overlay {
+    transition: none !important;
+  }
+}

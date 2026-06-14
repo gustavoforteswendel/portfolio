@@ -1,0 +1,499 @@
+/* =============================================
+   PROJECT-PAGE.CSS — Sistema editorial para páginas individuais
+   Cinematic · Split compositions · Inner-reveal clip-path
+   Gustavo Fortes Portfolio
+============================================= */
+
+/* ── NAV ──────────────────────────────────── */
+.page-nav {
+  position:   fixed;
+  top:        0;
+  left:       0;
+  right:      0;
+  z-index:    100;
+  display:    flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:    0 5vw;
+  height:     var(--nav-h, 72px);
+  background: linear-gradient(to bottom, rgba(8,8,8,0.88) 0%, transparent 100%);
+}
+
+.page-nav__back {
+  font-size:      0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color:          var(--fg-muted, #6e6b63);
+  transition:     color 0.2s ease;
+}
+.page-nav__back:hover { color: var(--fg, #f0ede8); }
+
+.page-nav__logo {
+  font-family:    var(--font-display, 'Cormorant Garamond', serif);
+  font-size:      1.15rem;
+  font-weight:    500;
+  letter-spacing: 0.08em;
+  color:          var(--fg, #f0ede8);
+}
+
+/* ── HERO ─────────────────────────────────── */
+.proj-hero {
+  position:   relative;
+  height:     100svh;
+  overflow:   hidden;
+  display:    flex;
+  align-items: flex-end;
+}
+
+.proj-hero__bg {
+  position: absolute;
+  inset:    0;
+  z-index:  0;
+}
+
+.proj-hero__bg img {
+  width:          100%;
+  height:         100%;
+  object-fit:     cover;
+  transform-origin: center center;
+}
+
+.proj-hero__vignette {
+  position:   absolute;
+  inset:      0;
+  z-index:    1;
+  background: linear-gradient(
+    160deg,
+    rgba(8,8,8,0.08) 0%,
+    rgba(8,8,8,0.42) 45%,
+    rgba(8,8,8,0.92) 100%
+  );
+}
+
+.proj-hero__content {
+  position:   relative;
+  z-index:    2;
+  width:      100%;
+  display:    flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding:    0 5vw 6vh;
+}
+
+.proj-hero__index {
+  display:        block;
+  font-size:      0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color:          var(--accent, #c9a96e);
+  margin-bottom:  1.2rem;
+}
+
+.proj-hero__title {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size:   clamp(4rem, 9.5vw, 9.5rem);
+  font-weight: 300;
+  line-height: 0.90;
+  color:       var(--fg, #f0ede8);
+}
+
+.proj-hero__title em {
+  font-style: italic;
+  color:      var(--accent, #c9a96e);
+}
+
+.proj-hero__right {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     flex-end;
+  gap:             1.6rem;
+  padding-bottom:  0.3rem;
+}
+
+.proj-hero__tags {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     flex-end;
+  gap:             0.4rem;
+}
+
+.proj-hero__tag {
+  font-size:      0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color:          var(--fg-muted, #6e6b63);
+}
+
+.proj-hero__cta {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            0.5em;
+  font-size:      0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color:          var(--accent, #c9a96e);
+  border:         1px solid rgba(201,169,110,0.28);
+  padding:        0.65em 1.3em;
+  transition:     border-color 0.25s ease, color 0.25s ease;
+}
+.proj-hero__cta:hover {
+  border-color: var(--accent, #c9a96e);
+  color:        var(--fg, #f0ede8);
+}
+
+/* ── PROJ ACT (intro editorial) ───────────── */
+.proj-act {
+  display:     grid;
+  grid-template-columns: 22% 1fr;
+  gap:         5vw;
+  padding:     10vh 5vw 10vh;
+  align-items: start;
+  border-bottom: 1px solid var(--fg-dim, #2a2825);
+}
+
+.proj-act__label-col {
+  display:        flex;
+  flex-direction: column;
+  gap:            2.8rem;
+  padding-top:    0.1rem;
+}
+
+.proj-act__tags {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.55rem;
+}
+
+.proj-act__tag {
+  font-size:      0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color:          var(--fg-muted, #6e6b63);
+  border-left:    1px solid rgba(201,169,110,0.3);
+  padding-left:   0.9em;
+}
+
+.proj-act__body {
+  display:        flex;
+  flex-direction: column;
+  gap:            2.2rem;
+}
+
+.proj-act__intro {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size:   clamp(1.25rem, 2.1vw, 1.95rem);
+  font-weight: 300;
+  line-height: 1.55;
+  color:       var(--fg, #f0ede8);
+  max-width:   62ch;
+}
+
+.proj-act__study {
+  font-size:   0.68rem;
+  line-height: 1.72;
+  color:       var(--fg-muted, #6e6b63);
+  font-style:  italic;
+  max-width:   44ch;
+}
+
+.proj-act__published {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            0.45em;
+  font-size:      0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color:          var(--accent, #c9a96e);
+  border-bottom:  1px solid rgba(201,169,110,0.25);
+  padding-bottom: 0.2em;
+  transition:     border-color 0.2s ease;
+  width:          fit-content;
+}
+.proj-act__published:hover { border-color: var(--accent, #c9a96e); }
+
+/* ── COMPOSITIONS ─────────────────────────── */
+.proj-comp {
+  position:    relative;
+  padding:     6vh 4vw;
+  display:     flex;
+  gap:         1.8vw;
+  align-items: flex-start;
+  min-height:  88vh;
+}
+
+/* Left variant: dominant LEFT, secondary inset right */
+.proj-comp--left { flex-direction: row; }
+.proj-comp--left .comp__primary   { flex: 0 0 64%; }
+.proj-comp--left .comp__secondary { flex: 0 0 calc(33% - 1.8vw); margin-top: 10vh; }
+
+/* Right variant: dominant RIGHT, secondary inset left */
+.proj-comp--right { flex-direction: row-reverse; }
+.proj-comp--right .comp__primary   { flex: 0 0 64%; }
+.proj-comp--right .comp__secondary { flex: 0 0 calc(33% - 1.8vw); margin-top: 16vh; align-self: flex-end; margin-bottom: 8vh; }
+
+/* Solo variant: primary centered, full width */
+.proj-comp--solo { padding: 4vh 4vw; display: block; }
+.proj-comp--solo .comp__primary { width: 86%; margin: 0 auto; height: 86vh; }
+
+/* ── PRIMARY IMAGE CONTAINER ─────────────── */
+.comp__primary {
+  position: relative;
+  overflow: hidden;
+  height:   80vh;
+}
+
+.comp__img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  display:    block;
+}
+
+/* Base image — fica visível enquanto a nova sobe por cima */
+.comp__img--base {
+  transform:  scale(1);
+  /* só começa a recuar DEPOIS que a nova já cobre ~60% */
+  transition:
+    transform 1.8s var(--ease-expo, cubic-bezier(0.16,1,0.3,1)) 1.2s,
+    opacity   1.4s ease 1.2s;
+}
+
+/* Container do inner-reveal — nova imagem sobe de baixo para cima */
+.comp__inner-reveal {
+  position:   absolute;
+  inset:      0;
+  overflow:   hidden;
+  /* escondida abaixo — vai revelar subindo */
+  clip-path:  inset(0 0 100% 0);
+  transition: clip-path 1.6s var(--ease-expo, cubic-bezier(0.16,1,0.3,1)) 0.3s;
+}
+
+.comp__inner-reveal img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  /* leve zoom inicial que se dissolve conforme revela */
+  transform:  scale(1.06);
+  transition: transform 2.2s var(--ease-expo, cubic-bezier(0.16,1,0.3,1)) 0.3s;
+}
+
+/* ── Estado revelado ── */
+.proj-comp.is-revealed .comp__inner-reveal {
+  clip-path: inset(0 0 0% 0);   /* sobe completamente */
+}
+.proj-comp.is-revealed .comp__inner-reveal img {
+  transform: scale(1);
+}
+.proj-comp.is-revealed .comp__img--base {
+  opacity:   0.12;
+  transform: scale(1.03);
+}
+
+/* ── SECONDARY IMAGE ─────────────────────── */
+.comp__secondary {
+  position:  relative;
+  overflow:  hidden;
+  height:    60vh;
+  opacity:   0;
+  transform: translateY(28px);
+  transition:
+    opacity   1.0s ease 1.0s,
+    transform 1.2s var(--ease-expo, cubic-bezier(0.16,1,0.3,1)) 1.0s;
+}
+.proj-comp.is-revealed .comp__secondary {
+  opacity:   1;
+  transform: translateY(0);
+}
+.comp__secondary img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+}
+
+/* ── COMPOSITION LABEL ───────────────────── */
+.comp__label {
+  position:     absolute;
+  bottom:       7vh;
+  left:         5vw;
+  z-index:      3;
+  writing-mode: vertical-rl;
+  transform:    rotate(180deg);
+  font-size:    0.56rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color:        var(--fg-muted, #6e6b63);
+}
+
+/* ── TEXT BLOCK ──────────────────────────── */
+.proj-text {
+  display:       grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap:           6vw;
+  padding:       12vh 5vw;
+  align-items:   start;
+  border-top:    1px solid var(--fg-dim, #2a2825);
+  border-bottom: 1px solid var(--fg-dim, #2a2825);
+}
+
+.proj-text__quote {
+  font-family:  var(--font-display, 'Cormorant Garamond', serif);
+  font-size:    clamp(1.75rem, 2.8vw, 2.6rem);
+  font-weight:  300;
+  font-style:   italic;
+  line-height:  1.22;
+  color:        var(--accent, #c9a96e);
+  position:     sticky;
+  top:          calc(var(--nav-h, 72px) + 5vh);
+}
+
+.proj-text__body {
+  display:        flex;
+  flex-direction: column;
+  gap:            1.6rem;
+}
+
+.proj-text__p {
+  font-size:   0.86rem;
+  line-height: 1.85;
+  color:       var(--fg-muted, #6e6b63);
+}
+
+/* ── VIDEO ───────────────────────────────── */
+.proj-video {
+  padding:    8vh 5vw 10vh;
+  border-top: 1px solid var(--fg-dim, #2a2825);
+}
+
+.proj-video__header {
+  display:       flex;
+  align-items:   baseline;
+  gap:           2.4rem;
+  margin-bottom: 3.5vh;
+}
+
+.proj-video__title {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size:   clamp(1.3rem, 2.4vw, 2.2rem);
+  font-weight: 300;
+  color:       var(--fg-muted, #6e6b63);
+}
+
+.proj-video video {
+  width:        100%;
+  aspect-ratio: 16 / 9;
+  background:   #000;
+  display:      block;
+}
+
+/* ── NEXT PROJECT ────────────────────────── */
+.proj-next {
+  display:    block;
+  position:   relative;
+  height:     86vh;
+  overflow:   hidden;
+  border-top: 1px solid var(--fg-dim, #2a2825);
+  cursor:     pointer;
+}
+
+.proj-next__bg {
+  position: absolute;
+  inset:    0;
+}
+
+.proj-next__bg img {
+  width:       100%;
+  height:      100%;
+  object-fit:  cover;
+  transform:   scale(1.06);
+  transition:  transform 0.9s var(--ease-expo, cubic-bezier(0.16,1,0.3,1));
+}
+.proj-next:hover .proj-next__bg img { transform: scale(1); }
+
+.proj-next__vignette {
+  position:   absolute;
+  inset:      0;
+  z-index:    1;
+  background: linear-gradient(
+    to top,
+    rgba(8,8,8,0.90) 0%,
+    rgba(8,8,8,0.28) 55%,
+    transparent 100%
+  );
+}
+
+.proj-next__content {
+  position: absolute;
+  bottom:   8vh;
+  left:     5vw;
+  z-index:  2;
+}
+
+.proj-next__label {
+  display:        block;
+  font-size:      0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color:          var(--accent, #c9a96e);
+  margin-bottom:  1.4rem;
+}
+
+.proj-next__title {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size:   clamp(3.5rem, 7.5vw, 8rem);
+  font-weight: 300;
+  line-height: 0.90;
+  color:       var(--fg, #f0ede8);
+}
+
+/* ── FOOTER override ─────────────────────── */
+.project-page .footer {
+  padding:    2.5vh 5vw;
+  display:    flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--fg-dim, #2a2825);
+  font-size:  0.62rem;
+  letter-spacing: 0.1em;
+  color:      var(--fg-muted, #6e6b63);
+  background: var(--bg, #080808);
+}
+
+/* ── SCROLL REVEAL genérico ──────────────── */
+.js-reveal {
+  opacity:    0;
+  transform:  translateY(22px);
+  transition:
+    opacity   0.95s ease,
+    transform 1.15s var(--ease-expo, cubic-bezier(0.16,1,0.3,1));
+}
+.js-reveal.is-visible {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+/* ── MOBILE ──────────────────────────────── */
+@media (max-width: 768px) {
+  .proj-hero__title { font-size: clamp(3rem, 12vw, 5rem); }
+  .proj-hero__content { flex-direction: column; gap: 2rem; }
+  .proj-hero__right { align-items: flex-start; }
+
+  .proj-act { grid-template-columns: 1fr; gap: 2.4rem; padding: 8vh 5vw; }
+
+  .proj-comp,
+  .proj-comp--left,
+  .proj-comp--right { flex-direction: column; min-height: auto; padding: 4vh 4vw; }
+  .proj-comp--left .comp__primary,
+  .proj-comp--right .comp__primary,
+  .proj-comp--left .comp__secondary,
+  .proj-comp--right .comp__secondary { flex: none; width: 100%; margin: 0; }
+  .comp__primary { height: 55vw; }
+  .comp__secondary { height: 44vw; margin-top: 1.5vw; }
+  .comp__label { display: none; }
+
+  .proj-comp--solo .comp__primary { width: 100%; height: 56vw; }
+
+  .proj-text { grid-template-columns: 1fr; gap: 2.4rem; padding: 8vh 5vw; }
+  .proj-text__quote { position: static; }
+
+  .proj-next__title { font-size: clamp(2.8rem, 10vw, 4.5rem); }
+}

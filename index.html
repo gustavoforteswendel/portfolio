@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gustavo Fortes — Designer e Desenvolvedor Front-End. Experiências digitais premium onde design e código se tornam inseparáveis.">
+  <title>Gustavo Fortes — Designer & Desenvolvedor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.1/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- =============================================
+       INTRO OVERLAY — MacBook cinematic entrance
+  ============================================= -->
+  <div id="intro-overlay" aria-label="Intro" role="presentation">
+    <canvas id="intro-canvas"></canvas>
+    <button id="intro-skip" aria-label="Pular introdução">SKIP →</button>
+  </div>
+
+  <!-- =============================================
+       SITE WRAP — revelado pela intro
+  ============================================= -->
+  <div id="site-wrap">
+
+  <!-- =============================================
+       NAV
+  ============================================= -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav__logo">GF</a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#hero"     class="nav__link">Home</a></li>
+      <li><a href="#projects" class="nav__link">Projetos</a></li>
+      <li><a href="#stacks"   class="nav__link">Stacks</a></li>
+      <li><a href="#about"    class="nav__link">Sobre</a></li>
+      <li><a href="#contact"  class="nav__link">Contato</a></li>
+    </ul>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- =============================================
+       HERO
+       Future: Three.js badge interativo com assets/kartu.glb
+       Montar no #badge-container via ThreeJS loader
+  ============================================= -->
+  <section id="hero" class="hero">
+
+    <!-- Partículas de fundo -->
+    <canvas id="hero-particles" class="hero__particles" aria-hidden="true"></canvas>
+
+    <div class="hero__bg-text" aria-hidden="true">DESIGN</div>
+
+    <!-- Notebook 3D decorativo — canvas absoluto, flutua sobre o hero -->
+    <canvas id="hero-notebook-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero__layout">
+
+      <div class="hero__text-area">
+        <p class="hero__eyebrow">Designer & Desenvolvedor Front-End</p>
+        <h1 class="hero__title">
+          <span class="hero__title-line">Gustavo</span>
+          <span class="hero__title-line hero__title-line--accent">Fortes</span>
+        </h1>
+        <p class="hero__desc">
+          Crio experiências digitais premium,<br>
+          onde design e código se tornam inseparáveis.
+        </p>
+        <a href="#projects" class="hero__cta">Ver projetos</a>
+      </div>
+
+    </div>
+
+    <div class="hero__scroll-hint" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+      <span>scroll</span>
+    </div>
+
+  </section>
+
+  <!-- =============================================
+       PROJ-INTRO — introdução editorial antes da galeria
+       300vh outer → sticky 100svh → word-by-word reveal
+       js/proj-intro.js controla via scroll
+  ============================================= -->
+  <div class="proj-intro-outer" id="proj-intro-outer">
+    <section id="proj-intro" class="proj-intro" aria-hidden="true">
+
+      <!-- Fragmentos editoriais de fundo -->
+      <div class="pi-frag pi-frag--1"
+           data-speed="0.18" data-op="0.35" data-dir="l" data-delay="0.00">
+        <img src="projetos/ouro-do-sul/home-1.png" alt="" draggable="false">
+      </div>
+      <div class="pi-frag pi-frag--2"
+           data-speed="0.30" data-op="0.48" data-dir="r" data-delay="0.01">
+        <img src="projetos/arquitetura-e-vida/home.png" alt="" draggable="false">
+      </div>
+      <div class="pi-frag pi-frag--3"
+           data-speed="0.12" data-op="0.22" data-dir="l" data-delay="0.03">
+        <img src="projetos/thais-couto/home.png" alt="" draggable="false">
+      </div>
+      <div class="pi-frag pi-frag--4"
+           data-speed="0.22" data-op="0.40" data-dir="r" data-delay="0.02">
+        <img src="projetos/ivone-dossena/home.png" alt="" draggable="false">
+      </div>
+      <div class="pi-frag pi-frag--5"
+           data-speed="0.35" data-op="0.28" data-dir="l" data-delay="0.02">
+        <img src="projetos/willyam-nessy/home.png" alt="" draggable="false">
+      </div>
+      <div class="pi-frag pi-frag--6"
+           data-speed="0.20" data-op="0.42" data-dir="r" data-delay="0.04">
+        <img src="projetos/ouro-do-sul/home-2.png" alt="" draggable="false">
+      </div>
+
+      <!-- Conteúdo textual -->
+      <div class="pi-content">
+        <p class="pi-eyebrow">Portfólio &nbsp;·&nbsp; 2026</p>
+
+        <h2 class="pi-phrase" aria-label="Trabalhos feitos para serem sentidos.">
+          <span data-pi-w>Trabalhos</span>
+          <span data-pi-w>feitos</span>
+          <span data-pi-w>para</span>
+          <span data-pi-w data-em>serem</span>
+          <span data-pi-w data-em>sentidos.</span>
+        </h2>
+
+        <div class="pi-bridge" aria-hidden="true"></div>
+
+        <p class="pi-details">
+          05 projetos selecionados&nbsp;&nbsp;·&nbsp;&nbsp;Front-end / Motion / Redesign
+        </p>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- =============================================
+       PROJECTS
+       .projects-outer: wrapper com altura calculada pelo JS
+       .projects: sticky 100svh — track translada horizontalmente
+       js/horizontal-scroll.js: lerp + parallax de imagem
+       js/card-interaction.js: transição shared-element no clique
+  ============================================= -->
+  <div class="projects-outer" id="projects-outer">
+  <section id="projects" class="projects">
+
+    <!-- Barra inferior: título, progress, contador -->
+    <div class="projects__bar" aria-hidden="true">
+      <h2 class="projects__heading">Projetos</h2>
+      <div class="projects__progress-wrap">
+        <div class="projects__progress" id="projects-progress">
+          <div class="projects__progress-fill" id="projects-progress-fill"></div>
+        </div>
+      </div>
+      <span class="projects__counter" id="projects-counter">01 / 05</span>
+    </div>
+
+    <!-- Track horizontal — translação via JS -->
+    <div class="projects__track" id="projects-track">
+
+      <!-- SCENE 1 — Ouro do Sul -->
+      <article class="scene is-active" data-project="ouro-do-sul" data-index="0">
+        <a href="pages/ouro-do-sul.html" class="scene__link">
+          <div class="scene__bg">
+            <div class="scene__bg-inner">
+              <img src="projetos/ouro-do-sul/home-1.png" alt="Ouro do Sul" class="scene__img">
+            </div>
+          </div>
+          <div class="scene__shade"></div>
+          <div class="scene__frame">
+            <span class="scene__num" aria-hidden="true">01</span>
+            <div class="scene__text">
+              <div class="scene__title-clip"><h3 class="scene__title">Ouro<br>do Sul</h3></div>
+              <div class="scene__details">
+                <p class="scene__category">E-commerce / Identidade Digital — 2024</p>
+                <p class="scene__desc">Marca gaúcha premium de vinhos e produtos gourmet.</p>
+                <span class="scene__cta" aria-hidden="true">Ver projeto ↗</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- SCENE 2 — Arquitetura e Vida (texto direita) -->
+      <article class="scene scene--right" data-project="arquitetura-e-vida" data-index="1">
+        <a href="pages/arquitetura-e-vida.html" class="scene__link">
+          <div class="scene__bg">
+            <div class="scene__bg-inner">
+              <img src="projetos/arquitetura-e-vida/home.png" alt="Arquitetura e Vida" class="scene__img">
+            </div>
+          </div>
+          <div class="scene__shade"></div>
+          <div class="scene__frame">
+            <span class="scene__num" aria-hidden="true">02</span>
+            <div class="scene__text">
+              <div class="scene__title-clip"><h3 class="scene__title">Arquitetura<br>e Vida</h3></div>
+              <div class="scene__details">
+                <p class="scene__category">Site Institucional / Arquitetura — 2024</p>
+                <p class="scene__desc">Portfólio e identidade para escritório de arquitetura.</p>
+                <span class="scene__cta" aria-hidden="true">Ver projeto ↗</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- SCENE 3 — Ivone Dossena -->
+      <article class="scene" data-project="ivone-dossena" data-index="2">
+        <a href="pages/ivone-dossena.html" class="scene__link">
+          <div class="scene__bg">
+            <div class="scene__bg-inner">
+              <img src="projetos/ivone-dossena/home.png" alt="Ivone Dossena" class="scene__img">
+            </div>
+          </div>
+          <div class="scene__shade"></div>
+          <div class="scene__frame">
+            <span class="scene__num" aria-hidden="true">03</span>
+            <div class="scene__text">
+              <div class="scene__title-clip"><h3 class="scene__title">Ivone<br>Dossena</h3></div>
+              <div class="scene__details">
+                <p class="scene__category">Site Profissional / Direito — 2024</p>
+                <p class="scene__desc">Presença digital com autoridade para advogada especialista.</p>
+                <span class="scene__cta" aria-hidden="true">Ver projeto ↗</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- SCENE 4 — Thaís Couto (texto direita) -->
+      <article class="scene scene--right" data-project="thais-couto" data-index="3">
+        <a href="pages/thais-couto.html" class="scene__link">
+          <div class="scene__bg">
+            <div class="scene__bg-inner">
+              <img src="projetos/thais-couto/home.png" alt="Thaís Couto" class="scene__img">
+            </div>
+          </div>
+          <div class="scene__shade"></div>
+          <div class="scene__frame">
+            <span class="scene__num" aria-hidden="true">04</span>
+            <div class="scene__text">
+              <div class="scene__title-clip"><h3 class="scene__title">Thaís<br>Couto</h3></div>
+              <div class="scene__details">
+                <p class="scene__category">Site Profissional / Saúde — 2024</p>
+                <p class="scene__desc">Site humanizado para especialista em saúde e bem-estar.</p>
+                <span class="scene__cta" aria-hidden="true">Ver projeto ↗</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- SCENE 5 — Willyam Nessy -->
+      <article class="scene" data-project="willyam-nessy" data-index="4">
+        <a href="pages/willyam-nessy.html" class="scene__link">
+          <div class="scene__bg">
+            <div class="scene__bg-inner">
+              <img src="projetos/willyam-nessy/home.png" alt="Willyam Nessy" class="scene__img">
+            </div>
+          </div>
+          <div class="scene__shade"></div>
+          <div class="scene__frame">
+            <span class="scene__num" aria-hidden="true">05</span>
+            <div class="scene__text">
+              <div class="scene__title-clip"><h3 class="scene__title">Willyam<br>Nessy</h3></div>
+              <div class="scene__details">
+                <p class="scene__category">Site Profissional / Advocacia — 2024</p>
+                <p class="scene__desc">Credibilidade digital para escritório de advocacia.</p>
+                <span class="scene__cta" aria-hidden="true">Ver projeto ↗</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+
+    </div>
+    <!-- /projects__track -->
+
+  </section>
+  </div>
+  <!-- /projects-outer -->
+
+  <!-- =============================================
+       STACKS — Fase 1: Frase editorial
+       Palavras reveladas uma a uma pelo scroll (p1 0→1).
+       Sticky 100vh dentro de outer 220vh.
+  ============================================= -->
+  <div class="stacks-phrase-outer" id="stacks-phrase-outer">
+  <section class="stacks-phrase" id="stacks" aria-label="Stacks">
+
+    <div class="stacks-phrase__inner" id="stacks-phrase-inner">
+
+      <p class="stacks-phrase__eyebrow">Ferramentas</p>
+
+      <h2 class="stacks-phrase__text" aria-label="As ferramentas por trás de cada experiência.">
+        <span class="sphrase__line">
+          <span class="sphrase__word"><span class="sphrase__letter">A</span><span class="sphrase__letter">s</span></span>
+          <span class="sphrase__word"><span class="sphrase__letter">f</span><span class="sphrase__letter">e</span><span class="sphrase__letter">r</span><span class="sphrase__letter">r</span><span class="sphrase__letter">a</span><span class="sphrase__letter">m</span><span class="sphrase__letter">e</span><span class="sphrase__letter">n</span><span class="sphrase__letter">t</span><span class="sphrase__letter">a</span><span class="sphrase__letter">s</span></span>
+        </span>
+        <span class="sphrase__line sphrase__line--em">
+          <span class="sphrase__word"><span class="sphrase__letter">p</span><span class="sphrase__letter">o</span><span class="sphrase__letter">r</span></span>
+          <span class="sphrase__word"><span class="sphrase__letter">t</span><span class="sphrase__letter">r</span><span class="sphrase__letter">á</span><span class="sphrase__letter">s</span></span>
+          <span class="sphrase__word"><span class="sphrase__letter">d</span><span class="sphrase__letter">e</span></span>
+        </span>
+        <span class="sphrase__line">
+          <span class="sphrase__word"><span class="sphrase__letter">c</span><span class="sphrase__letter">a</span><span class="sphrase__letter">d</span><span class="sphrase__letter">a</span></span>
+          <span class="sphrase__word"><span class="sphrase__letter">e</span><span class="sphrase__letter">x</span><span class="sphrase__letter">p</span><span class="sphrase__letter">e</span><span class="sphrase__letter">r</span><span class="sphrase__letter">i</span><span class="sphrase__letter">ê</span><span class="sphrase__letter">n</span><span class="sphrase__letter">c</span><span class="sphrase__letter">i</span><span class="sphrase__letter">a</span><span class="sphrase__letter">.</span></span>
+        </span>
+      </h2>
+
+    </div>
+
+  </section>
+  </div>
+  <!-- /stacks-phrase-outer -->
+
+  <!-- =============================================
+       STACKS — Fase 2: Mapa neural de ferramentas
+       Ícones + rede de conexões via Canvas.
+       Parallax por scroll (p2) + deslocamento de mouse.
+       Sticky 100vh dentro de outer 240vh.
+  ============================================= -->
+  <div class="stacks-outer" id="stacks-outer">
+  <section class="stacks">
+
+    <!-- Rede neural (canvas) — z-index abaixo dos ícones -->
+    <canvas class="stacks__net" id="stacks-net" aria-hidden="true"></canvas>
+
+    <!-- Ícones das tecnologias — posição absoluta, parallax via JS -->
+    <!-- Índices 0-9 mapeiam para CONNS em parallax-stacks.js        -->
+    <div class="stacks__canvas" id="stacks-canvas">
+
+      <!-- 0: JavaScript -->
+      <div class="stk" data-depth="0.22" data-mouse="0.25" data-sz="60"
+           style="left:30%; top:28%; --stk-sz:60px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/javascript/f0ede8"
+               alt="" aria-hidden="true" width="60" height="60" loading="lazy">
+        </div>
+        <span class="stk__name">JavaScript</span>
+        <span class="stk__desc">Lógica &amp; Interatividade</span>
+      </div>
+
+      <!-- 1: React -->
+      <div class="stk" data-depth="0.17" data-mouse="0.22" data-sz="54"
+           style="left:52%; top:12%; --stk-sz:54px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/react/f0ede8"
+               alt="" aria-hidden="true" width="54" height="54" loading="lazy">
+        </div>
+        <span class="stk__name">React</span>
+        <span class="stk__desc">UI Reativa</span>
+      </div>
+
+      <!-- 2: HTML -->
+      <div class="stk" data-depth="0.28" data-mouse="0.18" data-sz="44"
+           style="left:8%; top:18%; --stk-sz:44px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/html5/f0ede8"
+               alt="" aria-hidden="true" width="44" height="44" loading="lazy">
+        </div>
+        <span class="stk__name">HTML</span>
+        <span class="stk__desc">Estrutura</span>
+      </div>
+
+      <!-- 3: CSS -->
+      <div class="stk" data-depth="0.32" data-mouse="0.22" data-sz="44"
+           style="left:12%; top:52%; --stk-sz:44px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/css/f0ede8"
+               alt="" aria-hidden="true" width="44" height="44" loading="lazy">
+        </div>
+        <span class="stk__name">CSS</span>
+        <span class="stk__desc">Estilo &amp; Layout</span>
+      </div>
+
+      <!-- 4: Next.js -->
+      <div class="stk" data-depth="0.40" data-mouse="0.30" data-sz="48"
+           style="left:62%; top:38%; --stk-sz:48px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/nextdotjs/f0ede8"
+               alt="" aria-hidden="true" width="48" height="48" loading="lazy">
+        </div>
+        <span class="stk__name">Next.js</span>
+        <span class="stk__desc">Full-Stack</span>
+      </div>
+
+      <!-- 5: GSAP -->
+      <div class="stk" data-depth="0.55" data-mouse="0.28" data-sz="40"
+           style="left:22%; top:65%; --stk-sz:40px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/greensock/f0ede8"
+               alt="" aria-hidden="true" width="40" height="40" loading="lazy">
+        </div>
+        <span class="stk__name">GSAP</span>
+        <span class="stk__desc">Animação Avançada</span>
+      </div>
+
+      <!-- 6: Three.js -->
+      <div class="stk" data-depth="0.45" data-mouse="0.38" data-sz="48"
+           style="left:46%; top:60%; --stk-sz:48px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/threedotjs/f0ede8"
+               alt="" aria-hidden="true" width="48" height="48" loading="lazy">
+        </div>
+        <span class="stk__name">Three.js</span>
+        <span class="stk__desc">3D &amp; WebGL</span>
+      </div>
+
+      <!-- 7: Figma -->
+      <div class="stk" data-depth="0.50" data-mouse="0.35" data-sz="48"
+           style="left:70%; top:60%; --stk-sz:48px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/figma/f0ede8"
+               alt="" aria-hidden="true" width="48" height="48" loading="lazy">
+        </div>
+        <span class="stk__name">Figma</span>
+        <span class="stk__desc">Design &amp; Prototipagem</span>
+      </div>
+
+      <!-- 8: Git -->
+      <div class="stk" data-depth="0.62" data-mouse="0.16" data-sz="36"
+           style="left:78%; top:22%; --stk-sz:36px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/git/f0ede8"
+               alt="" aria-hidden="true" width="36" height="36" loading="lazy">
+        </div>
+        <span class="stk__name">Git</span>
+        <span class="stk__desc">Versionamento</span>
+      </div>
+
+      <!-- 9: PostgreSQL -->
+      <div class="stk" data-depth="0.68" data-mouse="0.20" data-sz="40"
+           style="left:55%; top:78%; --stk-sz:40px">
+        <div class="stk__icon-wrap">
+          <img class="stk__icon" src="https://cdn.simpleicons.org/postgresql/f0ede8"
+               alt="" aria-hidden="true" width="40" height="40" loading="lazy">
+        </div>
+        <span class="stk__name">PostgreSQL</span>
+        <span class="stk__desc">Banco de Dados</span>
+      </div>
+
+    </div>
+    <!-- /stacks__canvas -->
+
+  </section>
+  </div>
+  <!-- /stacks-outer -->
+
+  <!-- =============================================
+       ABOUT
+  ============================================= -->
+  <section id="about" class="about">
+
+    <div class="about__visual">
+      <img
+        src="assets/foto-perfil.png"
+        alt="Gustavo Fortes"
+        class="about__photo"
+        loading="lazy"
+      >
+      <span class="about__photo-caption">Gustavo Fortes, 2024</span>
+    </div>
+
+    <div class="about__content">
+      <span class="label">Sobre</span>
+      <h2 class="about__title">
+        Experiências<br>
+        <em>que contam</em><br>
+        histórias.
+      </h2>
+      <p class="about__text">
+        Meu nome é Gustavo Fortes e atualmente curso Análise e Desenvolvimento de Sistemas
+        na Universidade do Vale do Rio dos Sinos (UNISINOS), onde venho consolidando minha
+        base em desenvolvimento de software, arquitetura de aplicações e engenharia de sistemas.
+      </p>
+      <p class="about__text">
+        Ao longo da minha trajetória, descobri um interesse especial pelo front-end e pela
+        criação de interfaces que vão além da funcionalidade — experiências digitais capazes
+        de transmitir identidade, contar histórias e gerar impacto através do design,
+        da interação e do movimento.
+      </p>
+      <p class="about__text">
+        Minha stack principal envolve HTML, CSS e JavaScript, além de React, Next.js,
+        GSAP e Three.js. Mais do que desenvolver páginas, procuro criar produtos digitais
+        com personalidade própria, inspirados em referências editoriais, motion design
+        e experiências interativas de alto nível.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- =============================================
+       CONTACT
+  ============================================= -->
+  <section id="contact" class="contact">
+    <div class="contact__bg-text" aria-hidden="true">CONTATO</div>
+    <div class="contact__content">
+      <span class="label">Vamos trabalhar juntos</span>
+      <h2 class="contact__title">
+        Tem um projeto<br>
+        <em>em mente?</em>
+      </h2>
+      <a href="mailto:gustavoforteswendel@gmail.com" class="contact__email">
+        gustavoforteswendel@gmail.com
+      </a>
+      <nav class="contact__social-links" aria-label="Redes sociais">
+        <a href="https://www.linkedin.com/in/gustavo-henrique-fortes-wendel-65a420386/" class="contact__social" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/gustavoforteswendel" class="contact__social" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://wa.me/5551995278405" class="contact__social" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="footer">
+    <span>© 2024 Gustavo Fortes</span>
+    <span>Feito com intenção</span>
+  </footer>
+
+  </div><!-- /site-wrap -->
+
+  <!-- Intro Three.js (ES module) -->
+  <script type="module" src="js/intro.js"></script>
+  <!-- Notebook hero decorativo (ES module, inicia após introDone) -->
+  <script type="module" src="js/hero-notebook.js"></script>
+  <!-- Partículas 2D do hero -->
+  <script src="js/particles.js"></script>
+  <!-- Scripts existentes -->
+  <script src="js/main.js"></script>
+  <script src="js/horizontal-scroll.js"></script>
+  <script src="js/parallax-stacks.js"></script>
+  <script src="js/card-interaction.js"></script>
+  <!-- Introdução editorial da galeria de projetos -->
+  <script src="js/proj-intro.js"></script>
+
+</body>
+</html>
